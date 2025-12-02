@@ -1,0 +1,101 @@
+/* General */
+body {
+    padding: 0 20px;
+    font: 16px Arial, sans-serif;
+    background: #f7f9fc;
+    color: #111827;
+}
+
+button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #e5e7eb;
+}
+
+td:last-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+th {
+    background: #f3f4f6;
+    text-align: left;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+}
+
+h4 {
+    margin-top: 8px;
+}
+
+/* Login form */
+.login-form {
+    display: grid;
+    gap: 8px;
+    max-width: 300px;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Patient Modal */
+.input-wrapper{
+    margin-bottom: 12px;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+}
+
+/* Appointments Modal */
+.appointment-form input {
+    width: 200px;
+}
+
+select {
+    width: 216px;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+}
+
+/* Medication Modal */
+.medication-form input {
+    width: 200px;
+}
+
+/* Admin Page */
+table button {
+    margin: 8px;
+}
