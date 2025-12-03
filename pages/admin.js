@@ -20,7 +20,7 @@ export default function Admin() {
             setPatients(data);
         };
         fetchPatients();
-    }, []);
+    }, [patients]);
 
     const openPatientDetails = (id) => {
         const patient = patients.find(p => p.id === id);
@@ -37,29 +37,39 @@ export default function Admin() {
         }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        const url = `/api/patients`;
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    const url = isEditing ? `/api/patients` : `/api/patients`; // Ensure ID is included correctly for editing
+
+    try {
         const response = await fetch(url, {
-            method: isEditing ? 'PUT' : 'POST',
+            method: isEditing ? 'PUT' : 'POST', // Use PUT if editing, otherwise POST
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newPatient),
+            body: JSON.stringify(newPatient), // Include the ID in newPatient object
         });
 
-    if (response.ok) {
-        const patientData = await response.json();
-        if (isEditing) {
-            setPatients((prev) => prev.map(p => (p.id === patientData.id ? patientData : p)));
+        if (response.ok) {
+            const patientData = await response.json();
+            if (isEditing) {
+                // Update the existing patient in the patients state
+                setPatients((prev) =>
+                    prev.map(p => (p.id === patientData.id ? patientData : p))
+                );
+            } else {
+                // Add newly created patient to the state
+                setPatients((prev) => [...prev, patientData]);
+            }
+            resetModal(); // Reset and close modal
+            setError('');
         } else {
-            setPatients((prev) => [...prev, patientData]);
+            setError('Failed to save patient.'); // Handle errors
         }
-        resetModal();
-    } else {
-        setError('Failed to save patient.');
+    } catch (error) {
+        console.error('Error:', error);
+        setError('An error occurred while saving the patient.');
     }
 };
 

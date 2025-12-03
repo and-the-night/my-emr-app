@@ -7,12 +7,6 @@
       "password": "Password123!",
       "appointments": [
         {
-          "id": 1,
-          "provider": "Dr Kim West",
-          "datetime": "2025-09-16T16:30:00.000-07:00",
-          "repeat": "weekly"
-        },
-        {
           "id": 2,
           "provider": "Dr Lin James",
           "datetime": "2025-09-19T18:30:00.000-07:00",
@@ -80,7 +74,7 @@
           "quantity": "4",
           "refill_on": "2025-12-31",
           "refill_schedule": "monthly",
-          "id": 3
+          "id": 5
         }
       ]
     },
